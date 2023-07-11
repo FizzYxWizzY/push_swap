@@ -6,11 +6,38 @@
 /*   By: mflury <mflury@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 17:41:15 by mflury            #+#    #+#             */
-/*   Updated: 2023/07/03 15:59:56 by mflury           ###   ########.fr       */
+/*   Updated: 2023/07/11 16:16:13 by mflury           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int	error(char *msg)
+{
+	printf("Error: %s.\n", msg);
+	exit (0);
+}
+
+int	is_sorted(int *stack)
+{
+	int i;
+
+	i = 0;
+	while (stack[i + 1])
+	{
+		if(stack[i] < stack[i + 1])
+			i++;
+		else
+			return (0);
+	}
+	return (1);
+}
+
+
+
+
+
+
 
 int	ft_atoi(const char *str)
 {
@@ -43,63 +70,114 @@ int	ft_atoi(const char *str)
 int	main(int argc, char **argv)
 {
 	int	i;
+	int j;
 	int	*a;
 	int	*b;
-
-	a = malloc((argc + 2) * sizeof(int));
-	b = malloc((argc + 2) * sizeof(int));
-	i = 1;
+	
 	if (argc < 3)
-		return (1);
+		exit (0);
+	a = malloc((argc) * sizeof(int));
+	b = malloc((argc) * sizeof(int));
+	i = 1;
+	j = 0;
+	while (i < argc)
+	{
+		while (argv[i][j])
+		{
+			if ((argv[i][j] < '0' || argv[i][j] > '9') && argv[i][j] != '-')
+				error("Invalid agruments");
+			else
+				j++;
+		}
+		j = 0;
+		i++;
+	}
+	i = 1;
 	while (i < argc)
 	{
 		a[i - 1] = ft_atoi(argv[i]);
 		b[i - 1] = 0;
 		i++;
 	}
-	a[i + 2] = '\0';
-	b[i + 2] = '\0';
+	a[i - 1] = '\0';
+	b[i - 1] = '\0';
 	i = 0;
 	while (a[i])
 	{
 		printf("%d,%d\n", a[i],b[i]);
 		i++;
 	}
-	b[0] = 123;
-	ft_push(b, a, "pb");
+	
+	// sort 2 numbers.
+	if (argc == 3)
+	{
+		if (!is_sorted(a))
+			ft_swap(a, b, "sa");
+		return (0);
+	}	
+
+	// sort 3 numbers.
+	//
+	// 		1 2 3 ok
+	// 1 3 2 sa + rra || sa + raa + ra
+	// 2 1 3 sa
+	// 		2 3 1 ra
+	// 3 1 2 ra + ra || rra
+	// 3 2 1 sa + ra
+	if (argc == 4)
+	{
+		while (!is_sorted(a))
+		{
+			if (a[0] < a[1] && a[2] < a[0])
+				ft_rotate(a, "ra");
+			else if (a[0] > a[1] && a[1] < a[2])
+				ft_reverse_rotate(a, "rra");
+		}
+	}
+
 	i = 0;
 	while (a[i])
 	{
 		printf("%d,%d\n", a[i], b[i]);
 		i++;
 	}
-	ft_swap(a, b, "sa");
-	i = 0;
-	while (a[i])
-	{
-		printf("%d,%d\n", a[i], b[i]);
-		i++;
-	}
-	ft_push(a, b, "pa");
-	i = 0;
-	while (a[i])
-	{
-		printf("%d,%d\n", a[i], b[i]);
-		i++;
-	}
-	ft_push(b, a, "pb");
-	i = 0;
-	while (a[i])
-	{
-		printf("%d,%d\n", a[i], b[i]);
-		i++;
-	}
-	ft_rotate(a, "ra");
-	i = 0;
-	while (a[i])
-	{
-		printf("%d,%d\n", a[i], b[i]);
-		i++;
-	}
+
+	// ft_push(b, a, "pb");
+	// i = 0;
+	// while (a[i])
+	// {
+	// 	printf("%d,%d\n", a[i], b[i]);
+	// 	i++;
+	// }
+	// ft_swap(a, b, "sa");
+	// i = 0;
+	// while (a[i])
+	// {
+	// 	printf("%d,%d\n", a[i], b[i]);
+	// 	i++;
+	// }
+	// ft_push(a, b, "pa");
+	// i = 0;
+	// while (a[i])
+	// {
+	// 	printf("%d,%d\n", a[i], b[i]);
+	// 	i++;
+	// }
+	// ft_push(a, b, "pa");
+	// i = 0;
+	// while (a[i])
+	// {
+	// 	printf("%d,%d\n", a[i], b[i]);
+	// 	i++;
+	// }
+	// ft_rotate(b, "rb");
+	// i = 0;
+	// while (a[i])
+	// {
+	// 	printf("%d,%d\n", a[i], b[i]);
+	// 	i++;
+	// }
+	free (a);
+	free (b);
 	return (0);
 }
