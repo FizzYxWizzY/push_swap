@@ -6,7 +6,7 @@
 /*   By: mflury <mflury@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 18:19:27 by mflury            #+#    #+#             */
-/*   Updated: 2023/07/11 16:24:39 by mflury           ###   ########.fr       */
+/*   Updated: 2023/07/12 05:24:25 by mflury           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,15 +39,15 @@ void	ft_reverse_rotate(int *stack, char *msg)
 	if (!stack[0])
 		return ;
 	tmp2 = stack[i];
-	while (i > 0)
+	while (i >= 0)
 	{
-		if (i - 1 == 0)
+		if (i - 1 < 0)
 			break ;
 		tmp1 = stack[i - 1];
 		stack[i - 1] = tmp2;
 		finish = tmp1;
 		i--;
-		if (i - 1 == 0)
+		if (i - 1 < 0)
 			break ;
 		tmp2 = stack[i - 1];
 		stack[i - 1] = tmp1;
