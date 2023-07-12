@@ -6,7 +6,7 @@
 /*   By: mflury <mflury@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 17:41:15 by mflury            #+#    #+#             */
-/*   Updated: 2023/07/11 16:16:13 by mflury           ###   ########.fr       */
+/*   Updated: 2023/07/12 06:20:52 by mflury           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,18 +120,30 @@ int	main(int argc, char **argv)
 	//
 	// 		1 2 3 ok
 	// 1 3 2 sa + rra || sa + raa + ra
-	// 2 1 3 sa
+	// 		2 1 3 sa
 	// 		2 3 1 ra
-	// 3 1 2 ra + ra || rra
-	// 3 2 1 sa + ra
+	// 		3 1 2 ra + ra || rra
+	// 			3 2 1 sa + ra
 	if (argc == 4)
 	{
 		while (!is_sorted(a))
 		{
-			if (a[0] < a[1] && a[2] < a[0])
+			if (a[0] < a[1] && a[1] > a[2] && a[2] < a[0])
 				ft_rotate(a, "ra");
-			else if (a[0] > a[1] && a[1] < a[2])
+			else if (a[0] > a[1] && a[1] < a[2] && a[0] > a[2])
 				ft_reverse_rotate(a, "rra");
+			else if (a[0] > a[1] && a[0] < a[2] && a[1] < a[2])
+				ft_swap(a, b, "sa");
+			else if (a[0] > a[1] && a[1] > a[2] && a[0] > a[2])
+			{
+				ft_swap(a, b, "sa");
+				ft_rotate(a, "ra");
+			}
+			else if (a[0] < a[1] && a[1] > a[2] && a[1] < a[2])
+			{
+				ft_swap(a, b, "sa");
+				ft_reverse_rotate(a, "rra");
+			}
 		}
 	}
 
