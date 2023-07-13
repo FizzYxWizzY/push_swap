@@ -45,5 +45,5 @@ void	ft_reverse_rotate(int *stack, char *msg)
 	}
 	i = ft_strlen(stack);
 	stack[i] = finish;
-	printf("%s\n", msg);
+	ft_printf("%s\n", msg);
 }

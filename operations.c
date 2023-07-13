@@ -6,7 +6,7 @@
 /*   By: mflury <mflury@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 18:19:27 by mflury            #+#    #+#             */
-/*   Updated: 2023/07/12 05:24:25 by mflury           ###   ########.fr       */
+/*   Updated: 2023/07/13 17:24:17 by mflury           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	ft_reverse_rotate(int *stack, char *msg)
 	}
 	i = ft_strlen(stack);
 	stack[i] = finish;
-	printf("%s\n", msg);
+	ft_printf("%s\n", msg);
 }
 
 
@@ -90,7 +90,7 @@ void	ft_rotate(int *stack, char *msg)
 		i++;
 	}
 	stack[0] = finish;
-	printf("%s\n", msg);
+	ft_printf("%s\n", msg);
 }
 
 // push function.
@@ -128,7 +128,7 @@ void	ft_push(int *stacka, int *stackb, char *msg)
 		i++;
 	}
 	stacka[i - 1] = 0;
-	printf("%s\n", msg);
+	ft_printf("%s\n", msg);
 }
 
 // all the swaps,
@@ -164,5 +164,5 @@ void	ft_swap(int *stacka, int *stackb, char *msg)
 		stackb[1] = stackb[0];
 		stackb[0] = tmp;
 	}
-	printf("%s\n", msg);
+	ft_printf("%s\n", msg);
 }

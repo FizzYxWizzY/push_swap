@@ -6,7 +6,7 @@
 /*   By: mflury <mflury@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 17:41:15 by mflury            #+#    #+#             */
-/*   Updated: 2023/07/12 06:20:52 by mflury           ###   ########.fr       */
+/*   Updated: 2023/07/13 19:21:45 by mflury           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	error(char *msg)
 {
-	printf("Error: %s.\n", msg);
+	ft_printf("Error: %s.\n", msg);
 	exit (0);
 }
 
@@ -34,8 +34,28 @@ int	is_sorted(int *stack)
 }
 
 
+//
+//
+int	is_duplicated(int *stack)
+{
+	int	i;
+	int	j;
 
-
+	i = 0;
+	while (stack[i + 1])
+	{
+		j = i + 1;
+		while (stack[j])
+		{
+			if(stack[i] != stack[j])
+				j++;
+			else
+				return (1);
+		}
+		i++;
+	}
+	return (0);
+}
 
 
 
@@ -75,7 +95,7 @@ int	main(int argc, char **argv)
 	int	*b;
 	
 	if (argc < 3)
-		exit (0);
+		error("nothing to sort");
 	a = malloc((argc) * sizeof(int));
 	b = malloc((argc) * sizeof(int));
 	i = 1;
@@ -102,12 +122,18 @@ int	main(int argc, char **argv)
 	a[i - 1] = '\0';
 	b[i - 1] = '\0';
 	i = 0;
+	ft_printf("IN:  A,B\n");
 	while (a[i])
 	{
-		printf("%d,%d\n", a[i],b[i]);
+		ft_printf("     %d,%d\n", a[i],b[i]);
 		i++;
 	}
 	
+	// check duplicates
+	//
+	if (is_duplicated(a))
+		error("duplicated numbers detected");
+
 	// sort 2 numbers.
 	if (argc == 3)
 	{
@@ -148,9 +174,10 @@ int	main(int argc, char **argv)
 	}
 
 	i = 0;
+	ft_printf("OUT: A,B\n");
 	while (a[i])
 	{
-		printf("%d,%d\n", a[i], b[i]);
+		ft_printf("     %d,%d\n", a[i], b[i]);
 		i++;
 	}
 
@@ -158,35 +185,35 @@ int	main(int argc, char **argv)
 	// i = 0;
 	// while (a[i])
 	// {
-	// 	printf("%d,%d\n", a[i], b[i]);
+	// 	ft_printf("%d,%d\n", a[i], b[i]);
 	// 	i++;
 	// }
 	// ft_swap(a, b, "sa");
 	// i = 0;
 	// while (a[i])
 	// {
-	// 	printf("%d,%d\n", a[i], b[i]);
+	// 	ft_printf("%d,%d\n", a[i], b[i]);
 	// 	i++;
 	// }
 	// ft_push(a, b, "pa");
 	// i = 0;
 	// while (a[i])
 	// {
-	// 	printf("%d,%d\n", a[i], b[i]);
+	// 	ft_printf("%d,%d\n", a[i], b[i]);
 	// 	i++;
 	// }
 	// ft_push(a, b, "pa");
 	// i = 0;
 	// while (a[i])
 	// {
-	// 	printf("%d,%d\n", a[i], b[i]);
+	// 	ft_printf("%d,%d\n", a[i], b[i]);
 	// 	i++;
 	// }
 	// ft_rotate(b, "rb");
 	// i = 0;
 	// while (a[i])
 	// {
-	// 	printf("%d,%d\n", a[i], b[i]);
+	// 	ft_printf("%d,%d\n", a[i], b[i]);
 	// 	i++;
 	// }
 	free (a);

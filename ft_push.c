@@ -6,7 +6,7 @@
 /*   By: mflury <mflury@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 16:03:26 by mflury            #+#    #+#             */
-/*   Updated: 2023/07/04 20:15:06 by mflury           ###   ########.fr       */
+/*   Updated: 2023/07/13 17:23:27 by mflury           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,5 @@ void	ft_push(int *stacka, int *stackb, char *msg)
 		i++;
 	}
 	stacka[i - 1] = 0;
-	printf("%s\n", msg);
+	ft_printf("%s\n", msg);
 }

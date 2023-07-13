@@ -45,5 +45,5 @@ void	ft_swap(int *stacka, int *stackb, char *msg)
 		stackb[1] = stackb[0];
 		stackb[0] = tmp;
 	}
-	printf("%s\n", msg);
+	ft_printf("%s\n", msg);
 }

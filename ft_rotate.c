@@ -42,5 +42,5 @@ void	ft_rotate(int *stack, char *msg)
 		i++;
 	}
 	stack[0] = finish;
-	printf("%s\n", msg);
+	ft_printf("%s\n", msg);
 }
