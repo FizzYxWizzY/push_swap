@@ -6,21 +6,21 @@
 /*   By: mflury <mflury@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 18:19:27 by mflury            #+#    #+#             */
-/*   Updated: 2023/07/13 17:24:17 by mflury           ###   ########.fr       */
+/*   Updated: 2023/07/16 02:17:27 by mflury           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_strlen(int *stack)
-{
-	int	i;
+// int	ft_strlen(int *stack)
+// {
+// 	int	i;
 
-	i = 0;
-	while (stack[i])
-		i++;
-	return (i);
-}
+// 	i = 0;
+// 	while (stack[i])
+// 		i++;
+// 	return (i);
+// }
 
 
 // reverse rotate function.
