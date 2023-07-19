@@ -12,8 +12,18 @@
 
 #include "push_swap.h"
 
-int	error(char *msg)
+int	error(t_stack *stack, char *msg)
 {
 	ft_printf("Error: %s.\n", msg);
+	if (stack->a)
+	{
+		free (stack->a);
+		stack->a = NULL;
+	}
+	if (stack->b)
+	{
+		free (stack->b);
+		stack->b = NULL;
+	}
 	exit (0);
 }

@@ -12,38 +12,38 @@
 
 #include "push_swap.h"
 
+// swap A sub-function.
+void	ft_swap_a(t_stack *stack, t_data *data)
+{
+	if (!stack->a[0] || !stack->a[1])
+		return ;
+	data->tmp1 = stack->a[1];
+	stack->a[1] = stack->a[0];
+	stack->a[0] = data->tmp1;
+}
+
+// swap B sub-function.
+void	ft_swap_b(t_stack *stack, t_data *data)
+{
+	if (!stack->b[0] || !stack->b[1])
+		return ;
+	data->tmp1 = stack->b[1];
+	stack->b[1] = stack->b[0];
+	stack->b[0] = data->tmp1;
+}
+
 // swap function.
 // sa, sb, ss.
-void	ft_swap(int *stacka, int *stackb, char *msg)
+void	ft_swap(t_stack *stack, t_data *data, char *msg)
 {
-	int	tmp;
-
 	if (msg[1] == 'a')
+		ft_swap_a(stack, data);
+	if (msg[1] == 'b')
+		ft_swap_b(stack, data);
+	if (msg[1] == 's')
 	{
-		if (!stacka[1])
-			return ;
-		tmp = stacka[1];
-		stacka[1] = stacka[0];
-		stacka[0] = tmp;
-	}
-	else if (msg[1] == 'b')
-	{
-		if (!stackb[1])
-			return ;
-		tmp = stackb[1];
-		stackb[1] = stackb[0];
-		stackb[0] = tmp;
-	}
-	else
-	{
-		if (!stacka[1] || !stackb[1])
-			return ;
-		tmp = stacka[1];
-		stacka[1] = stacka[0];
-		stacka[0] = tmp;
-		tmp = stackb[1];
-		stackb[1] = stackb[0];
-		stackb[0] = tmp;
+		ft_swap_a(stack, data);
+		ft_swap_b(stack, data);
 	}
 	ft_printf("%s\n", msg);
 }

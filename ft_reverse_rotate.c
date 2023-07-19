@@ -12,38 +12,78 @@
 
 #include "push_swap.h"
 
-// reverse rotate function.
-//
-void	ft_reverse_rotate(int *stack, char *msg)
+// reverse rotate A sub-function.
+void	ft_reverse_rotate_a(t_stack *stack, t_data *data)
 {
-	int	i;
-	int	tmp1;
-	int	tmp2;
-	int	finish;
-
-	i = ft_strlen(stack);
-	tmp1 = 0;
-	tmp2 = 0;
-	finish = 0;
-	if (!stack[0])
+	data->i = ft_strlen(stack->a);
+	data->tmp1 = 0;
+	data->tmp2 = 0;
+	data->finish = 0;
+	if (!stack->a[0])
 		return ;
-	tmp2 = stack[i];
-	while (i >= 0)
+	data->tmp2 = stack->a[data->i];
+	while (data->i >= 0)
 	{
-		if (i - 1 < 0)
+		if (data->i - 1 < 0)
 			break ;
-		tmp1 = stack[i - 1];
-		stack[i - 1] = tmp2;
-		finish = tmp1;
-		i--;
-		if (i - 1 < 0)
+		data->tmp1 = stack->a[i - 1];
+		stack->a[i - 1] = data->tmp2;
+		data->finish = data->tmp1;
+		data->i--;
+		if (data->i - 1 < 0)
 			break ;
-		tmp2 = stack[i - 1];
-		stack[i - 1] = tmp1;
-		finish = tmp2;
-		i--;
+		data->tmp2 = stack->a[i - 1];
+		stack->a[i - 1] = data->tmp1;
+		data->finish = data->tmp2;
+		data->i--;
 	}
-	i = ft_strlen(stack);
-	stack[i] = finish;
+	data->i = ft_strlen(stack->a);
+	stack->a[data->i] = data->finish;
+}
+
+// reverse rotate B sub-function.
+void	ft_reverse_rotate_b(t_stack *stack, t_data *data)
+{
+	data->i = ft_strlen(stack->b);
+	data->tmp1 = 0;
+	data->tmp2 = 0;
+	data->finish = 0;
+	if (!stack->b[0])
+		return ;
+	data->tmp2 = stack->b[data->i];
+	while (data->i >= 0)
+	{
+		if (data->i - 1 < 0)
+			break ;
+		data->tmp1 = stack->b[i - 1];
+		stack->b[i - 1] = data->tmp2;
+		data->finish = data->tmp1;
+		data->i--;
+		if (data->i - 1 < 0)
+			break ;
+		data->tmp2 = stack->b[i - 1];
+		stack->a[i - 1] = data->tmp1;
+		data->finish = data->tmp2;
+		data->i--;
+	}
+	data->i = ft_strlen(stack->b);
+	stack->b[data->i] = data->finish;
+}
+
+// reverse rotate function.
+// rra, rrb, rrr.
+void	ft_reverse_rotate(t_stack *stack, t_data *data, char *msg)
+{
+	if (msg[2] == 'a')
+		ft_reverse_rotate_a(stack, data);
+	if (msg[2] == 'b')
+		ft_reverse_rotate_b(stack, data);
+	if (msg[2] == 'r')
+	{
+		ft_reverse_rotate_a(stack, data);
+		ft_reverse_rotate_b(stack, data);
+	}
+	else
+		return ;
 	ft_printf("%s\n", msg);
 }

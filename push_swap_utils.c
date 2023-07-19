@@ -14,38 +14,33 @@
 
 // checks if the stack contrains repeated numbers.
 // returns 1 if there is a repeted number, 0 if not.
-int	is_duplicated(int *stack)
+int	is_duplicated(T_stack *stack, t_data data)
 {
-	int	i;
-	int	j;
-
-	i = 0;
-	while (stack[i + 1])
+	data->i = 0;
+	while (stack->a[data->i + 1])
 	{
-		j = i + 1;
-		while (stack[j])
+		data->j = data->i + 1;
+		while (stack->a[data->j])
 		{
-			if(stack[i] != stack[j])
-				j++;
+			if(stack->a[data->i] != stack->a[data->j])
+				data->j++;
 			else
 				return (1);
 		}
-		i++;
+		data->i++;
 	}
 	return (0);
 }
 
 // checks if the stack is sorted.
 // returns 1 if the stack is sorted, 0 if not.
-int	is_sorted(int *stack)
+int	is_sorted(t_stack *stack, t_data data)
 {
-	int i;
-
-	i = 0;
-	while (stack[i + 1])
+	data->i = 0;
+	while (stack[data->i + 1])
 	{
-		if(stack[i] < stack[i + 1])
-			i++;
+		if(stack[data->i] < stack[data->i + 1])
+			data->i++;
 		else
 			return (0);
 	}

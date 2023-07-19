@@ -12,35 +12,70 @@
 
 #include "push_swap.h"
 
-// rotate function.
-//
-void	ft_rotate(int *stack, char *msg)
+// rotate A sub-function.
+void	ft_rotate_a(t_stack *stack, t_data *data)
 {
-	int	i;
-	int	tmp1;
-	int	tmp2;
-	int	finish;
-
-	i = 0;
-	finish = 0;
-	if (!stack[0])
+	data->i = 0;
+	data->finish = 0;
+	if (!stack->a[0])
 		return ;
-	tmp2 = stack[i];
-	while (stack[i])
+	data->tmp2 = stack->a[data->i];
+	while (stack->a[data->i])
 	{
-		if (!stack[i + 1])
+		if (!stack->a[data->i + 1])
 			break ;
-		tmp1 = stack[i + 1];
-		stack[i + 1] = tmp2;
-		finish = tmp1;
-		i++;
-		if (!stack[i + 1])
+		data->tmp1 = stack->a[data->i + 1];
+		stack->a[data->i + 1] = data->tmp2;
+		data->finish = data->tmp1;
+		data->i++;
+		if (!stack->a[data->i + 1])
 			break ;
-		tmp2 = stack[i + 1];
-		stack[i + 1] = tmp1;
-		finish = tmp2;
-		i++;
+		data->tmp2 = stack->a[data->i + 1];
+		stack->a[data->i + 1] = data->tmp1;
+		data->finish = data->tmp2;
+		data->i++;
 	}
-	stack[0] = finish;
+	stack->a[0] = data->finish;
+}
+
+// rotate B sub-function.
+void	ft_rotate_b(t_stack *stack, t_data *data)
+{
+	data->i = 0;
+	data->finish = 0;
+	if (!stack->b[0])
+		return ;
+	data->tmp2 = stack->a[data->i];
+	while (stack->b[data->i])
+	{
+		if (!stack->b[data->i + 1])
+			break ;
+		data->tmp1 = stack->b[data->i + 1];
+		stack->b[data->i + 1] = data->tmp2;
+		data->finish = data->tmp1;
+		data->i++;
+		if (!stack->b[data->i + 1])
+			break ;
+		data->tmp2 = stack->b[data->i + 1];
+		stack->b[data->i + 1] = data->tmp1;
+		data->finish = data->tmp2;
+		data->i++;
+	}
+	stack->b[0] = data->finish;
+}
+
+// rotate function.
+// ra, rb, rr.
+void	ft_rotate(t_stack *stack, t_data *data, char *msg)
+{
+	if (msg[1] == 'a')
+		ft_rotate_a(stack, data);
+	if (msg[1] == 'b') 
+		ft_rotate_b(stack, data);
+	if (msg[1] == 'r')
+	{
+		ft_rotate_a(stack, data);
+		ft_rotate_b(stack, data);
+	}
 	ft_printf("%s\n", msg);
 }
