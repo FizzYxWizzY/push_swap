@@ -1,20 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_two.c                                         :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mflury <mflury@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/18 22:38:15 by mflury            #+#    #+#             */
-/*   Updated: 2023/07/19 16:41:44 by mflury           ###   ########.fr       */
+/*   Created: 2022/10/27 17:45:40 by mflury            #+#    #+#             */
+/*   Updated: 2022/11/30 15:12:16 by mflury           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-// sort 2 numbers.
-void	sort_two(t_stack *stack, t_data *data)
+// fonction qui copie la source src dans la destination dest
+// sur une longueur n.
+
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	if (!is_sorted(stack, data))
-		ft_swap(stack, data, "sa");
+	size_t	i;
+
+	i = 0;
+	if (!(dst || src))
+		return (NULL);
+	while (i < n)
+	{
+		((char *)dst)[i] = ((char *)src)[i];
+		i++;
+	}
+	return (dst);
 }

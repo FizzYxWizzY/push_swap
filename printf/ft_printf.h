@@ -1,20 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_two.c                                         :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mflury <mflury@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/18 22:38:15 by mflury            #+#    #+#             */
-/*   Updated: 2023/07/19 16:41:44 by mflury           ###   ########.fr       */
+/*   Created: 2022/12/16 15:30:12 by mflury            #+#    #+#             */
+/*   Updated: 2023/02/22 13:16:40 by mflury           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
-// sort 2 numbers.
-void	sort_two(t_stack *stack, t_data *data)
-{
-	if (!is_sorted(stack, data))
-		ft_swap(stack, data, "sa");
-}
+# include <stdarg.h>
+# include <stdlib.h>
+# include <stdint.h>
+# include <unistd.h>
+
+int	ft_printf(const char *str, ...);
+
+int	ft_print_c(char c);
+
+int	ft_print_s(char *str);
+
+int	ft_print_di(int n);
+
+int	ft_print_u(unsigned int n);
+
+int	ft_print_p(uintptr_t addr);
+
+int	ft_print_x(unsigned int n, const char type);
+
+#endif

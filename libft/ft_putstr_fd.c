@@ -1,20 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_two.c                                         :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mflury <mflury@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/18 22:38:15 by mflury            #+#    #+#             */
-/*   Updated: 2023/07/19 16:41:44 by mflury           ###   ########.fr       */
+/*   Created: 2022/11/15 14:26:58 by mflury            #+#    #+#             */
+/*   Updated: 2022/11/30 15:19:19 by mflury           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-// sort 2 numbers.
-void	sort_two(t_stack *stack, t_data *data)
+// fonction qui ecrit dans le file descriptor fd
+// une string s. 
+
+void	ft_putstr_fd(char *s, int fd)
 {
-	if (!is_sorted(stack, data))
-		ft_swap(stack, data, "sa");
+	int	i;
+
+	i = 0;
+	while (s[i])
+	{
+		ft_putchar_fd(s[i], fd);
+		i++;
+	}
 }

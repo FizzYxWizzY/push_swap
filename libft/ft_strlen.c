@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mflury <mflury@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/16 00:51:56 by mflury            #+#    #+#             */
-/*   Updated: 2023/07/16 00:51:56 by mflury           ###   ########.fr       */
+/*   Created: 2022/10/11 16:05:53 by mflury            #+#    #+#             */
+/*   Updated: 2022/10/11 16:05:53 by mflury           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int	error(t_stack *stack, char *msg)
+// fonction qui compte la longueur d une string str.
+
+size_t	ft_strlen(const char *str)
 {
-	ft_printf("Error: %s.\n", msg);
-	if (stack->a)
+	size_t	i;
+
+	i = 0;
+	while (str[i])
 	{
-		free (stack->a);
-		stack->a = NULL;
+		i++;
 	}
-	if (stack->b)
-	{
-		free (stack->b);
-		stack->b = NULL;
-	}
-	exit (0);
+	return (i);
 }

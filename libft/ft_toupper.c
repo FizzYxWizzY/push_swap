@@ -1,29 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mflury <mflury@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/16 00:51:56 by mflury            #+#    #+#             */
-/*   Updated: 2023/07/16 00:51:56 by mflury           ###   ########.fr       */
+/*   Created: 2022/10/13 01:48:09 by mflury            #+#    #+#             */
+/*   Updated: 2022/10/13 01:48:09 by mflury           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int	error(t_stack *stack, char *msg)
+// fonction qui met en majuscule le char c si minuscule.
+
+int	ft_toupper(int c)
 {
-	ft_printf("Error: %s.\n", msg);
-	if (stack->a)
-	{
-		free (stack->a);
-		stack->a = NULL;
-	}
-	if (stack->b)
-	{
-		free (stack->b);
-		stack->b = NULL;
-	}
-	exit (0);
+	if (c >= 'a' && c <= 'z')
+		return (c - 32);
+	else
+		return (c);
 }

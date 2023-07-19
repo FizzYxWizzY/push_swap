@@ -1,20 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_two.c                                         :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mflury <mflury@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/18 22:38:15 by mflury            #+#    #+#             */
-/*   Updated: 2023/07/19 16:41:44 by mflury           ###   ########.fr       */
+/*   Created: 2022/11/11 15:17:59 by mflury            #+#    #+#             */
+/*   Updated: 2022/11/30 15:22:04 by mflury           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
+#include <stdlib.h>
 
-// sort 2 numbers.
-void	sort_two(t_stack *stack, t_data *data)
+// fonction qui duplique une string str avec malloc.
+
+char	*ft_strdup(const char *s)
 {
-	if (!is_sorted(stack, data))
-		ft_swap(stack, data, "sa");
+	int		size;
+	int		i;
+	char	*cpy;
+
+	size = ft_strlen(s);
+	cpy = (char *)malloc(sizeof(char) * (size +1));
+	if (cpy == NULL)
+		return (NULL);
+	i = 0;
+	while (i < size)
+	{
+		*(cpy + i) = *(char *)(s + i);
+		i++;
+	}
+	cpy[i] = '\0';
+	return (cpy);
 }

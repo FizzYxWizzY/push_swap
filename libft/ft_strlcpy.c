@@ -1,20 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_two.c                                         :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mflury <mflury@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/18 22:38:15 by mflury            #+#    #+#             */
-/*   Updated: 2023/07/19 16:41:44 by mflury           ###   ########.fr       */
+/*   Created: 2022/11/11 15:04:47 by mflury            #+#    #+#             */
+/*   Updated: 2022/11/30 15:27:12 by mflury           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-// sort 2 numbers.
-void	sort_two(t_stack *stack, t_data *data)
+// fonction qui copie la string src dans la string dst.
+
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
-	if (!is_sorted(stack, data))
-		ft_swap(stack, data, "sa");
+	size_t	i;
+
+	i = 0;
+	while (i + 1 < dstsize && src[i] != '\0')
+	{
+		dst[i] = src[i];
+		i++;
+	}
+	if (i < dstsize)
+	{
+		dst[i] = '\0';
+	}
+	while (src[i] != '\0')
+		i++;
+	return (i);
 }

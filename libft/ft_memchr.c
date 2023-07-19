@@ -1,20 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_two.c                                         :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mflury <mflury@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/18 22:38:15 by mflury            #+#    #+#             */
-/*   Updated: 2023/07/19 16:41:44 by mflury           ###   ########.fr       */
+/*   Created: 2022/11/04 16:27:30 by mflury            #+#    #+#             */
+/*   Updated: 2022/11/30 15:10:59 by mflury           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-// sort 2 numbers.
-void	sort_two(t_stack *stack, t_data *data)
+// fonction qui cherche dans la string s le char c,
+// retourne la string depuis la premiere occurance de c.
+
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	if (!is_sorted(stack, data))
-		ft_swap(stack, data, "sa");
+	unsigned char	*ptr;
+
+	ptr = (unsigned char *)s;
+	while (n--)
+	{
+		if (*ptr != (unsigned char)c)
+			ptr++;
+		else
+			return (ptr);
+	}
+	return (NULL);
 }

@@ -1,20 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_two.c                                         :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mflury <mflury@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/18 22:38:15 by mflury            #+#    #+#             */
-/*   Updated: 2023/07/19 16:41:44 by mflury           ###   ########.fr       */
+/*   Created: 2022/10/27 14:54:27 by mflury            #+#    #+#             */
+/*   Updated: 2022/11/30 16:20:36 by mflury           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-// sort 2 numbers.
-void	sort_two(t_stack *stack, t_data *data)
+// fonction qui fait un strchr depuis la fin de la string s.
+
+char	*ft_strrchr(const char *s, int c)
 {
-	if (!is_sorted(stack, data))
-		ft_swap(stack, data, "sa");
+	int	i;
+
+	i = 0;
+	while (s[i])
+	{
+		i++;
+	}
+	while ((i + 1) != 0)
+	{
+		if (s[i] == (char) c)
+			return (&((char *)s)[i]);
+		else
+			i--;
+	}
+	return (0);
 }

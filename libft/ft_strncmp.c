@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mflury <mflury@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/16 00:51:56 by mflury            #+#    #+#             */
-/*   Updated: 2023/07/16 00:51:56 by mflury           ###   ########.fr       */
+/*   Created: 2022/10/11 16:10:21 by mflury            #+#    #+#             */
+/*   Updated: 2022/10/11 16:10:21 by mflury           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int	error(t_stack *stack, char *msg)
+// fonction qui compare les strings s1 et s2 sur une longueur n.
+
+int	ft_strncmp(const char *s1, const char *s2, unsigned int n)
 {
-	ft_printf("Error: %s.\n", msg);
-	if (stack->a)
+	unsigned int	i;
+
+	i = 0;
+	while ((s1[i] || s2[i]) && i < n)
 	{
-		free (stack->a);
-		stack->a = NULL;
+		if ((unsigned char)s1[i] != (unsigned char)s2[i])
+			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+		i++;
 	}
-	if (stack->b)
-	{
-		free (stack->b);
-		stack->b = NULL;
-	}
-	exit (0);
+	return (0);
 }

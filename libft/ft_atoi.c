@@ -1,64 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mflury <mflury@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/16 00:49:56 by mflury            #+#    #+#             */
-/*   Updated: 2023/07/16 00:49:56 by mflury           ###   ########.fr       */
+/*   Created: 2022/10/11 17:35:48 by mflury            #+#    #+#             */
+/*   Updated: 2022/10/11 17:35:49 by mflury           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
+#include <stdio.h>
 
-// checks if the stack contrains repeated numbers.
-// returns 1 if there is a repeted number, 0 if not.
-int	is_duplicated(t_stack *stack, t_data *data)
-{
-	data->i = 0;
-	while (stack->a[data->i + 1])
-	{
-		data->j = data->i + 1;
-		while (stack->a[data->j])
-		{
-			if (stack->a[data->i] != stack->a[data->j])
-				data->j++;
-			else
-				return (1);
-		}
-		data->i++;
-	}
-	return (0);
-}
+// fonction qui transforme une string de char en int,
+// detecte les spaces, marche avec les nbrs negatifs.
 
-// checks if the stack is sorted.
-// returns 1 if the stack is sorted, 0 if not.
-int	is_sorted(t_stack *stack, t_data *data)
-{
-	data->i = 0;
-	while (stack->a[data->i + 1])
-	{
-		if (stack->a[data->i] < stack->a[data->i + 1])
-			data->i++;
-		else
-			return (0);
-	}
-	return (1);
-}
-
-int	ft_stklen(int *stack)
-{
-	int	i;
-
-	i = 0;
-	while (stack[i])
-		i++;
-	return (i);
-}
-
-// classic atoi.
-//
 int	ft_atoi(const char *str)
 {
 	int				res;

@@ -1,20 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_two.c                                         :+:      :+:    :+:   */
+/*   ft_lstdelone_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mflury <mflury@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/18 22:38:15 by mflury            #+#    #+#             */
-/*   Updated: 2023/07/19 16:41:44 by mflury           ###   ########.fr       */
+/*   Created: 2022/11/28 14:19:03 by mflury            #+#    #+#             */
+/*   Updated: 2022/11/30 16:28:03 by mflury           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-// sort 2 numbers.
-void	sort_two(t_stack *stack, t_data *data)
+// Libère la mémoire de l’élément passé en argument en
+// utilisant la fonction ’del’ puis avec free(3). La
+// mémoire de ’next’ ne doit pas être free.
+
+void	ft_lstdelone(t_list *lst, void (*del)(void *))
 {
-	if (!is_sorted(stack, data))
-		ft_swap(stack, data, "sa");
+	if (!lst || !del)
+		return ;
+	del(lst->content);
+	free(lst);
 }
