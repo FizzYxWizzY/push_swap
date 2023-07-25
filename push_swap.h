@@ -6,7 +6,7 @@
 /*   By: mflury <mflury@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 17:47:09 by mflury            #+#    #+#             */
-/*   Updated: 2023/07/19 17:08:48 by mflury           ###   ########.fr       */
+/*   Updated: 2023/07/24 19:19:18 by mflury           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,9 @@
 # include "stdlib.h"
 # include "stdio.h"
 # include "unistd.h"
+# include "limits.h"
 # include "printf/ft_printf.h"
+# include "libft/libft.h"
 
 typedef struct s_stack
 {
@@ -29,6 +31,7 @@ typedef struct s_data
 {
 	int	i;
 	int	j;
+	int	min;
 	int	tmp1;
 	int	tmp2;
 	int	finish;
@@ -36,10 +39,11 @@ typedef struct s_data
 
 // int		ft_strlen(int *stack);
 // int		ft_atoi(const char *str);
-int		is_sorted(int *stack, t_data *data);
-int		is_duplicated(int *stack, t_data *data);
+int		is_sorted(t_stack *stack, t_data *data);
+int		is_duplicated(t_stack *stack, t_data *data);
 int		error(t_stack *stack, char *msg);
 int		ft_stklen(int *stack);
+void	search_and_replace(t_stack *stack, t_data *data);
 
 void	ft_swap(t_stack *stack, t_data *data, char *msg);
 void	ft_push(t_stack *stack, t_data *data, char *msg);

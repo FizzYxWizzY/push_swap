@@ -6,7 +6,7 @@
 /*   By: mflury <mflury@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 22:40:30 by mflury            #+#    #+#             */
-/*   Updated: 2023/07/19 16:43:24 by mflury           ###   ########.fr       */
+/*   Updated: 2023/07/21 02:16:11 by mflury           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,24 @@
 // sort 5 numbers.
 void	sort_five(t_stack *stack, t_data *data)
 {
-	data->i = 0;
-	while (data->i < 2)
+	int i = 0;
+	if (!is_sorted(stack, data))
 	{
-		if (stack->a[0] < stack->a[1] && stack->a[0] < stack->a[2]
-			&& stack->a[0] < stack->a[3]
-			&& (stack->a[0] < stack->a[4] || !stack->a[4]))
+		i = 0;
+		while (i < 2)
 		{
-			ft_push(stack, data, "pa");
-
+			if (stack->a[0] < stack->a[1] && stack->a[0] < stack->a[2]
+				&& stack->a[0] < stack->a[3]
+				&& (stack->a[0] < stack->a[4] || !stack->a[4]))
+			{
+				ft_push(stack, data, "pa");
+				i++;
+			}
+			else
+				ft_rotate(stack, data, "ra");
 		}
-		else
-			ft_rotate(stack, data, "ra");
-		data->i++;
+		sort_three(stack, data);
+		ft_push(stack, data, "pb");
+		ft_push(stack, data, "pb");
 	}
-	sort_three(stack, data);
-	ft_push(stack, data, "pb");
-	ft_push(stack, data, "pb");
 }
