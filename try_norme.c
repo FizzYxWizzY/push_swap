@@ -6,7 +6,7 @@
 /*   By: mflury <mflury@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 18:17:05 by mflury            #+#    #+#             */
-/*   Updated: 2023/07/25 15:44:16 by mflury           ###   ########.fr       */
+/*   Updated: 2023/08/01 18:53:18 by mflury           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,15 +58,15 @@ void	search_and_replace(t_stack *stack, t_data *data)
 	int	count;
 
 	count = 1;
-	tmp = malloc(ft_stklen(stack->a) + 1 * sizeof(int));
+	tmp = malloc(ft_stklen(stack->a) * sizeof(int));
 	if (!tmp)
 		error(stack, "malloc failed (tmp)");
-	tmp[ft_stklen(stack->a) + 1] = '\0';
+	tmp[ft_stklen(stack->a) - 1] = 0;
 	
 	i = search_index_min(stack, data);
 	tmp[i] = count;
 	count++;
-	while (count < ft_stklen(stack->a))
+	while (count <= ft_stklen(stack->a))
 	{
 		i = search_next_index_min(stack, data);
 		tmp[i] = count;
@@ -79,6 +79,7 @@ void	search_and_replace(t_stack *stack, t_data *data)
 		stack->a[i] = tmp[i];
 		i++;
 	}
+	free(tmp);
 }
 
 

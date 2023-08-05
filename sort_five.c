@@ -6,7 +6,7 @@
 /*   By: mflury <mflury@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 22:40:30 by mflury            #+#    #+#             */
-/*   Updated: 2023/07/21 02:16:11 by mflury           ###   ########.fr       */
+/*   Updated: 2023/08/03 18:41:29 by mflury           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,18 @@
 // sort 5 numbers.
 void	sort_five(t_stack *stack, t_data *data)
 {
-	int i = 0;
 	if (!is_sorted(stack, data))
 	{
-		i = 0;
-		while (i < 2)
+		while ( ft_stklen(stack->a) > 3)
 		{
 			if (stack->a[0] < stack->a[1] && stack->a[0] < stack->a[2]
 				&& stack->a[0] < stack->a[3]
 				&& (stack->a[0] < stack->a[4] || !stack->a[4]))
 			{
+				if (is_sorted(stack, data))
+					return ;
 				ft_push(stack, data, "pa");
-				i++;
+			
 			}
 			else
 				ft_rotate(stack, data, "ra");

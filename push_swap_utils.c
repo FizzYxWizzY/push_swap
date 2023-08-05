@@ -57,6 +57,7 @@ int	ft_stklen(int *stack)
 	return (i);
 }
 
+
 // classic atoi.
 //
 // int	ft_atoi(const char *str)

@@ -6,7 +6,7 @@
 /*   By: mflury <mflury@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 17:47:09 by mflury            #+#    #+#             */
-/*   Updated: 2023/07/24 19:19:18 by mflury           ###   ########.fr       */
+/*   Updated: 2023/08/04 01:47:31 by mflury           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,15 @@ typedef struct s_data
 	int	finish;
 }		t_data;
 
-// int		ft_strlen(int *stack);
-// int		ft_atoi(const char *str);
+int		is_int(char *num);
 int		is_sorted(t_stack *stack, t_data *data);
 int		is_duplicated(t_stack *stack, t_data *data);
 int		error(t_stack *stack, char *msg);
 int		ft_stklen(int *stack);
 void	search_and_replace(t_stack *stack, t_data *data);
+void	spliter(char *argv, t_stack *stack, t_data *data);
+
+void	arguments_checker(char **argv, t_stack *stack, t_data *data);
 
 void	ft_swap(t_stack *stack, t_data *data, char *msg);
 void	ft_push(t_stack *stack, t_data *data, char *msg);
@@ -53,5 +55,6 @@ void	ft_reverse_rotate(t_stack *stack, t_data *data, char *msg);
 void	sort_two(t_stack *stack, t_data *data);
 void	sort_three(t_stack *stack, t_data *data);
 void	sort_five(t_stack *stack, t_data *data);
+void	radix_sort(t_stack *stack, t_data *data);
 
 #endif
